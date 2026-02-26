@@ -261,14 +261,15 @@ body {
 }
 
 .chat-header {
-    height: 80px;
+    min-height: 80px;
+    height: auto;
+    padding: 12px 32px;
     background: rgba(10, 11, 16, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
     z-index: 5;
 }
 
@@ -276,23 +277,38 @@ body {
     display: flex;
     align-items: center;
     gap: 16px;
+    max-width: 70%;
 }
 
 .char-avatar {
     width: 48px;
     height: 48px;
     border-radius: 12px;
+    flex-shrink: 0;
 }
 
 .char-text h2 {
     font-family: var(--font-header);
     font-size: 18px;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 .char-text p {
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.char-description {
+    font-size: 11px !important;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 2px;
 }
 
 .header-actions {
@@ -506,6 +522,8 @@ textarea {
     background: var(--sidebar-bg);
     border: 1px solid var(--border);
     width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
     border-radius: 20px;
     padding: 32px;
     box-shadow: var(--shadow);

@@ -23,6 +23,7 @@ class CharacterInfo(BaseModel):
     character_id: str
     name: str
     title: Optional[str] = None
+    description: Optional[str] = None
     author_username: Optional[str] = None
 
 class ChatMessage(BaseModel):
@@ -89,6 +90,7 @@ async def get_recent_chats():
                 character_id=chat.character_id,
                 name=chat.character_name,
                 title=None, 
+                description=None,
                 author_username=None
             ) for chat in recent
         ]
@@ -105,6 +107,7 @@ async def get_my_characters():
                 character_id=char.character_id,
                 name=char.name,
                 title=char.title,
+                description=getattr(char, 'description', None),
                 author_username=state.me.username
             ) for char in my_chars
         ]
@@ -121,6 +124,7 @@ async def search_characters(query: str = Query(..., min_length=1)):
                 character_id=char.character_id,
                 name=char.name,
                 title=char.title,
+                description=getattr(char, 'description', None),
                 author_username=getattr(char, 'author_username', 'unknown')
             ) for char in results
         ]

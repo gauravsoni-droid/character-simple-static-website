@@ -15,6 +15,7 @@ const elements = {
     activeCharAvatar: document.getElementById('activeCharAvatar'),
     activeCharName: document.getElementById('activeCharName'),
     activeCharTitle: document.getElementById('activeCharTitle'),
+    activeCharDescription: document.getElementById('activeCharDescription'),
     messageInput: document.getElementById('messageInput'),
     sendBtn: document.getElementById('sendBtn'),
     charSearchInput: document.getElementById('charSearchInput'),
@@ -150,6 +151,7 @@ async function selectCharacter(char) {
     // Update Header
     elements.activeCharName.textContent = char.name;
     elements.activeCharTitle.textContent = char.title || 'Conversation';
+    elements.activeCharDescription.textContent = char.description || '';
     const avatarSeed = char.name.replace(/\s+/g, '');
     elements.activeCharAvatar.src = `https://api.dicebear.com/6.x/bottts/svg?seed=${avatarSeed}`;
 
