@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character.AI - Web Interface</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark-theme">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">Character AI</span>
+                </div>
+            </div>
+
+            <div class="user-profile" id="userProfile">
+                <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=Felix" alt="User Avatar" class="avatar"
+                    id="myAvatar">
+                <div class="user-info">
+                    <span class="username" id="myUsername">Loading...</span>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <!-- <button class="nav-item active" id="navRecent"><i class="fas fa-history"></i> Recent</button> -->
+                <button class="nav-item active" id="navMy"><i class="fas fa-user-circle"></i> My Characters</button>
+                <!-- <button class="nav-item" id="navSearch"><i class="fas fa-search"></i> Discover</button> -->
+                <button class="nav-item create-btn" id="navCreate"><i class="fas fa-plus"></i> Create</button>
+            </nav>
+
+            <div class="character-list-container">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="charSearchInput" placeholder="Search characters...">
+                </div>
+                <div class="character-list" id="characterList">
+                    <!-- List items will be injected here -->
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header" id="chatHeader">
+                <div class="char-id-info" style="display: none;"></div>
+                <div class="active-char-info">
+                    <img src="https://api.dicebear.com/6.x/bottts/svg?seed=Bot" alt="Character" class="char-avatar"
+                        id="activeCharAvatar">
+                    <div class="char-text">
+                        <h2 id="activeCharName">Select a Character</h2>
+                        <p id="activeCharTitle">Start a new conversation</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn"><i class="fas fa-info-circle"></i></button>
+                    <button class="icon-btn" id="newChatBtn"><i class="fas fa-sync-alt"></i></button>
+                </div>
+            </header>
+
+            <div class="messages-container" id="messagesContainer">
+                <div class="welcome-screen">
+                    <div class="welcome-content">
+                        <i class="fas fa-comments welcome-icon"></i>
+                        <h1>Welcome to Character AI</h1>
+                        <p>Select a character from the sidebar to start chatting.</p>
+                        <button class="primary-btn" onclick="document.getElementById('navMy').click()">View My
+                            Characters</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="chat-footer">
+                <div class="input-wrapper">
+                    <textarea id="messageInput" placeholder="Type a message..." rows="1" disabled></textarea>
+                    <button id="sendBtn" class="send-btn" disabled><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Create Character Modal -->
+        <div id="createModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Create a New Character</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <form id="createCharForm">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" required placeholder="Character Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Greeting</label>
+                        <textarea name="greeting" required placeholder="Hello! I am..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="title" placeholder="Short description/title">
+                    </div>
+                    <div class="form-group">
+                        <label>Visibility</label>
+                        <select name="visibility">
+                            <option value="private">Private</option>
+                            <option value="public">Public</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Create Character</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
