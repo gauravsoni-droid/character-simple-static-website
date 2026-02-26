@@ -40,7 +40,7 @@ function setupEventListeners() {
     // Navigation
     // elements.navRecent.addEventListener('click', () => switchView('recent'));
     elements.navMy.addEventListener('click', () => switchView('my'));
-    // elements.navSearch.addEventListener('click', () => switchView('search'));
+    elements.navSearch.addEventListener('click', () => switchView('search'));
 
     // Search
     let searchTimeout;
